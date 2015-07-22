@@ -1,4 +1,4 @@
-class User
+class User < ActiveRecord::Base
   include Login
   
   has_many :tasks
@@ -6,8 +6,6 @@ class User
   validates :email, presence: true, uniqueness: true
   validates :name, presence: true
   validates :password, presence: true
-  
-  
   
   
 end
