@@ -53,10 +53,26 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  
+  get "/login" => 'users#login', as: :login
+  get "/users" => 'users#index', as: :users
+  get "/users/new" => 'users#new', as: :new_user
+  post "/users/new" => 'users#post'
+  get "profile/edit" => 'users#edit', as: :edit_profile
+  put "profile/edit" => 'users#update'
+  delete "profile" => 'users#delete'
+  get "/profile" => 'users#profile', as: :profile
+  get "/users/:id" => 'users#show', as: :user     #identical to profile, except you're not logged in
+  
+  get "/users/:id/tasks" => 'tasks#users_tasks', as: :users_tasks
+  get "/tasks" => 'tasks#index', as: :my_tasks  #identical to users_tasks except you're logged in
+  get "/tasks/new" => 'tasks#new', as: :new_task
+  post "/tasks/new" => 'tasks#create'
+  get "/tasks/:id/edit" => 'tasks#edit', as: :edit_task
+  put "/tasks/:id/edit" => 'tasks#update'
+  delete "/tasks/:id" => 'tasks#delete'
+  get "/tasks/:id" => 'tasks#show', as: :task
   
   
-  
-  resources :users do
-    resources :tasks
-  end
 end
