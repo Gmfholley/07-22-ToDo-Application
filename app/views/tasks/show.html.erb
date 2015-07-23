@@ -1,0 +1,42 @@
+
+
+<% if @this_user == @user %>
+  <h3>My Profile</h3>
+  <%= link_to "Edit Profile", edit_profile_path %>
+  <%= link_to "Delete Profile", profile_path, data: {method: :delete, confirm: "Are you sure?"} %>
+<% end %>
+<ul>
+  <% @this_user.attributes.each do |attribute| %>
+    <li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
+  <% end %>
+</ul>
+
+<p>Associations:</p>
+<ul>
+  <% User.reflections.keys.each do |key| %>
+      <% @association = @this_user.method(key).call %>
+      <% if @association.respond_to? :each %>
+          <li><%= @association.name %></li>
+          <ul>
+          <% if @association.length == 0 %>
+            <li>None</li>
+          <% end %>
+          <% @association.each do |p| %>
+          <% if @this_user == @user %>
+              <li> <%= link_to p.name, my_task_path(p.id) %></li>
+          <% else  %>
+              <li> <%= link_to p.name, p %></li>
+          <% end %>
+          
+
+          <% end %>
+          </ul>
+      <% else %>
+        <li><%= "#{@association.class}: #{@association.name}"  %></li>
+      <% end %>
+  <% end %>        
+</ul>
+
+<% if @this_user == @user %>
+  <%= link_to "Add A Task", my_new_task_path %>
+<% end %>
