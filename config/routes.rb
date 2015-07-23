@@ -70,7 +70,6 @@ Rails.application.routes.draw do
   get "/profile" => 'users#show'
   # get "/users/:id" => 'users#show', as: :user    #identical to profile, except you're not logged in
   
-  get "/users/:id/tasks" => 'tasks#users_tasks', as: :users_tasks
   get "/tasks" => 'tasks#index', as: :my_tasks  #identical to users_tasks except you're logged in
   get "/tasks/new" => 'tasks#new', as: :my_new_task
   post "/tasks/new" => 'tasks#create'
@@ -78,6 +77,5 @@ Rails.application.routes.draw do
   put "/tasks/:id/edit" => 'tasks#update'
   delete "/tasks/:id" => 'tasks#delete'
   get "/tasks/:id" => 'tasks#show', as: :my_task
-  
-  
+    
 end
