@@ -113,4 +113,6 @@ Rails.application.routes.draw do
   delete "/tasks/:id" => 'tasks#delete'
   get "/tasks/:id" => 'tasks#show', as: :my_task
     
+  put "/tasks/:id/done" => 'tasks#done', as: :mark_done
+  put "/tasks/:id/undone" => 'tasks#undone', as: :mark_done
 end
