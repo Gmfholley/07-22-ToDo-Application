@@ -16,7 +16,7 @@
         <% end %>
       </li>
     <% else %>
-      <li><%= link_to task.name, task %> <%= link_to "#{user.name}'s Tasks", user_tasks_path(user.id) %></li>
+      <li><%= link_to task.name, user_tasks_path(user.id) %></li>
     <% end %>
   <% end %>
 </ul>
