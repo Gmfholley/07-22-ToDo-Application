@@ -1,6 +1,6 @@
 <%= form_for @user do |f| %>
-  <%= f.text_field("name", placeholder: "Type in your name.") %>
-  <%= f.text_field("email", placeholder: "Type in your email.") %>
-  <%= password_field("user", "password", placeholder: "Type in your password.") %>
-  <%= f.submit("Create Your Account") %>
+  <%= f.text_field("name", placeholder: "Type in the task.") %>
+  <%= f.label("completed") %>
+  <%= f.checkbox("completed") %>
+  <%= f.submit %>
 <% end %>
