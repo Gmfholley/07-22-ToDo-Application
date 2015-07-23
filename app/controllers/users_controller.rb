@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   # receive form to create a new record
   def create
     @user = User.new(params_permitted)
-    byebug
     if @user.save
       set_session
       redirect_to profile_path
@@ -72,21 +71,19 @@ class UsersController < ApplicationController
     end
   end
   
-  def profile
-    set_user_if_available
-    @obj = @user
-    render "show"
-  end
-  
   # show a single record
   def show
     set_user_if_available
-    @obj = params[:id]
+    if params[:id].blank?
+      @this_user = @user
+    else
+      @this_user = User.find(params[:id])
+    end
   end
   
   private
   def params_permitted
-    params["users"].permit(:email, :name, :password)
+    params["user"].permit(:email, :name, :password)
   end
   
 end
