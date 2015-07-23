@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   get "profile/edit" => 'users#edit', as: :edit_profile
   put "profile/edit" => 'users#update'
   delete "profile" => 'users#delete', as: :profile
-  get "/profile" => 'users#profile'
+  get "/profile" => 'users#show'
   # get "/users/:id" => 'users#show', as: :user    #identical to profile, except you're not logged in
   
   get "/users/:id/tasks" => 'tasks#users_tasks', as: :users_tasks
