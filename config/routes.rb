@@ -54,6 +54,41 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   
+  # ➜  07-22-todo_application git:(master) ✗ rake routes
+  #         Prefix Verb   URI Pattern                              Controller#Action
+  #     user_tasks GET    /users/:user_id/tasks(.:format)          tasks#index
+  #                POST   /users/:user_id/tasks(.:format)          tasks#create
+  #  new_user_task GET    /users/:user_id/tasks/new(.:format)      tasks#new
+  # edit_user_task GET    /users/:user_id/tasks/:id/edit(.:format) tasks#edit
+  #      user_task GET    /users/:user_id/tasks/:id(.:format)      tasks#show
+  #                PATCH  /users/:user_id/tasks/:id(.:format)      tasks#update
+  #                PUT    /users/:user_id/tasks/:id(.:format)      tasks#update
+  #                DELETE /users/:user_id/tasks/:id(.:format)      tasks#destroy
+  #          users GET    /users(.:format)                         users#index
+  #                POST   /users(.:format)                         users#create
+  #       new_user GET    /users/new(.:format)                     users#new
+  #      edit_user GET    /users/:id/edit(.:format)                users#edit
+  #           user GET    /users/:id(.:format)                     users#show
+  #                PATCH  /users/:id(.:format)                     users#update
+  #                PUT    /users/:id(.:format)                     users#update
+  #                DELETE /users/:id(.:format)                     users#destroy
+  #           home GET    /                                        users#login
+  #          login GET    /login(.:format)                         users#login
+  #                POST   /login(.:format)                         users#login_check
+  #   edit_profile GET    /profile/edit(.:format)                  users#edit
+  #   profile_edit PUT    /profile/edit(.:format)                  users#update
+  #        profile DELETE /profile(.:format)                       users#delete
+  #                GET    /profile(.:format)                       users#show
+  #    users_tasks GET    /users/:id/tasks(.:format)               tasks#users_tasks
+  #       my_tasks GET    /tasks(.:format)                         tasks#index
+  #    my_new_task GET    /tasks/new(.:format)                     tasks#new
+  #      tasks_new POST   /tasks/new(.:format)                     tasks#create
+  #   my_edit_task GET    /tasks/:id/edit(.:format)                tasks#edit
+  #                PUT    /tasks/:id/edit(.:format)                tasks#update
+  #                DELETE /tasks/:id(.:format)                     tasks#delete
+  #        my_task GET    /tasks/:id(.:format)                     tasks#show
+  
+  
   resources :users do
     resources :tasks
   end

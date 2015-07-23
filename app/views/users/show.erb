@@ -1,12 +1,14 @@
-<ul>
-<% @this_user.attributes.each do |attribute| %>
-<li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
+
+
+<% if @this_user == @user %>
+  <h3>My Profile</h3>
+  <%= link_to "Edit Profile", edit_profile_path %>
+  <%= link_to "Delete Profile", profile_path, data: {method: :delete, confirm: "Are you sure?"} %>
 <% end %>
-
-<%= link_to "Edit Profile", edit_profile_path %>
-<%= link_to "Delete Profile", profile_path, data: {method: :delete, confirm: "Are you sure?"} %>
-
-
+<ul>
+  <% @this_user.attributes.each do |attribute| %>
+    <li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
+  <% end %>
 </ul>
 
 <p>Associations:</p>
@@ -20,7 +22,13 @@
             <li>None</li>
           <% end %>
           <% @association.each do |p| %>
-            <li><%= p.name %></li>
+          <% if @this_user == @user %>
+              <li> <%= link_to p.name, my_task_path(p.id) %></li>
+          <% else  %>
+              <li> <%= link_to p.name, p %></li>
+          <% end %>
+          
+
           <% end %>
           </ul>
       <% else %>
@@ -28,3 +36,7 @@
       <% end %>
   <% end %>        
 </ul>
+
+<% if @this_user == @user %>
+  <%= link_to "Add A Task", my_new_task_path %>
+<% end %>
