@@ -114,5 +114,5 @@ Rails.application.routes.draw do
   get "/tasks/:id" => 'tasks#show', as: :my_task
     
   put "/tasks/:id/done" => 'tasks#done', as: :mark_done
-  put "/tasks/:id/undone" => 'tasks#undone', as: :mark_done
+  put "/tasks/:id/undone" => 'tasks#undone', as: :mark_undone
 end
