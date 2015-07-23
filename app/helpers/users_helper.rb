@@ -11,7 +11,7 @@ module UsersHelper
       @user = User.find(session_id)
     else
       clear_session
-      redirect_to "/"
+      redirect_to home_path
     end 
   end 
 
@@ -30,19 +30,18 @@ module UsersHelper
   def clear_session
     session[:id] = nil
   end
-
+  
+  def set_session
+    session[:id] = @user.id
+  end
+  
   def save_user_and_set_session
     @user.save
     set_session
   end
 
-  def set_session
-    session[:id] = @user.id
-  end
-
   def find_user_by_email
     @user = User.where("email" => params["users"]["email"]).first
   end
-
 
 end

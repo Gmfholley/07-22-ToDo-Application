@@ -1,0 +1,13 @@
+<ul>
+  <% @user.errors.messages.each do |error| %>
+    <li><%= error[1] %></li>
+  <% end %>
+</ul>
+
+
+<%= form_tag(edit_profile_path, method: "post") do %>
+  <input type="text" name="users[name]" placeholder="Type in your name." value="<%=@user.name%>"></input>
+  <input type="text" name="users[email]" placeholder="Type in your email." value="<%=@user.email%>"></input>
+  <input type="password" name="users[password]" placeholder="Type in your password."></input>
+  <input type="submit"></input>
+<% end %>

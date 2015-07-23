@@ -1,0 +1,26 @@
+<ul>
+<% @obj.attributes.each do |attribute| %>
+<li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
+<% end %>
+
+</ul>
+
+<p>Associations:</p>
+<ul>
+  <% @class_name.reflections.keys.each do |key| %>
+      <% @association = @obj.method(key).call %>
+      <% if @association.respond_to? :each %>
+          <li><%= @association.name %></li>
+          <ul>
+          <% if @association.length == 0 %>
+            <li>None</li>
+          <% end %>
+          <% @association.each do |p| %>
+            <li><%= p.name %></li>
+          <% end %>
+          </ul>
+      <% else %>
+        <li><%= "#{@association.class}: #{@association.name}"  %></li>
+      <% end %>
+  <% end %>        
+</ul>
