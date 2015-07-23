@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   # show all records
   def index
     set_user_if_available
-    set_task
+    @tasks = @user.tasks
   end
   
   # receive form to create a new record
@@ -19,7 +19,7 @@ class TasksController < ApplicationController
   # look at form to create a new record
   def new
     current_user
-    @task = Task.new
+    @task = @user.tasks.new()
   end
   
   # show a single record
@@ -38,10 +38,14 @@ class TasksController < ApplicationController
   def update
     current_user
     @task = Task.find(params["task"]["id"])
-    if @task.update(params_permitted)
-      redirect_to my_tasks_path, :notice => "Successfully updated!"
-    else
-      render "edit"
+    if @task.user_id != @user.id
+      redirect_to profile_path
+    else 
+      if @task.update(params_permitted)
+        redirect_to my_tasks_path, :notice => "Successfully updated!"
+      else
+        render "edit"
+      end
     end
   end
   
@@ -59,14 +63,14 @@ class TasksController < ApplicationController
   private
   def set_task
     if params[:id].blank?
-      @task = Task.new
+      @task = Task.new(user_id: @user.id)
     else
       @task = Task.find(params[:id])
     end
   end
   
   def params_permitted
-    params["task"].permitted(:name, :completed)
+    params["task"].permit(:name, :completed, :user_id)
   end
   
 end
