@@ -1,7 +1,14 @@
+
+<% if @task.user_id == @user.id %>
+  <h3>My Tasks</h3>
+<% else %>
+  <h3><%= @user.name %>'s Tasks</h3>
+<% end %>
+
 <ul>
-  <% @tasks.each do |user| %>
-    <% if user == @task %>
-      <li><%= link_to user.name, profile_path %> <%= link_to "My Tasks", my_tasks_path %></li>
+  <% @tasks.each do |task| %>
+    <% if task.user_id == @user %>
+      <li><%= link_to user.name, edit_path %> <%= link_to "My Tasks", my_task_path %></li>
     <% else %>
       <li><%= link_to user.name, user %> <%= link_to "#{user.name}'s Tasks", user_tasks_path(user.id) %></li>
     <% end %>

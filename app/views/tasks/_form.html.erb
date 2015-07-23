@@ -1,5 +1,6 @@
 <%= form_for @task do |f| %>
   <%= f.text_field("name", placeholder: "Type in the task.") %>
+  <%= f.hidden_field("user_id") %>
   <%= f.label("completed") %>
   <%= f.checkbox("completed") %>
   <%= f.submit %>
