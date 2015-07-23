@@ -1,5 +1,5 @@
 <ul>
-<% @obj.attributes.each do |attribute| %>
+<% @this_user.attributes.each do |attribute| %>
 <li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
 <% end %>
 
@@ -7,8 +7,8 @@
 
 <p>Associations:</p>
 <ul>
-  <% @class_name.reflections.keys.each do |key| %>
-      <% @association = @obj.method(key).call %>
+  <% User.reflections.keys.each do |key| %>
+      <% @association = @this_user.method(key).call %>
       <% if @association.respond_to? :each %>
           <li><%= @association.name %></li>
           <ul>
