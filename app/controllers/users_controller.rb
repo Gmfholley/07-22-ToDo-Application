@@ -77,16 +77,20 @@ class UsersController < ApplicationController
   # show a single record
   def show
     set_user_if_available
-    if params[:id].blank?
-      @this_user = @user
-    else
-      @this_user = User.find(params[:id])
-    end
+    set_this_user
   end
   
   private
   def params_permitted
     params["user"].permit(:email, :name, :password)
+  end
+  
+  def set_this_user
+    if params[:id].blank?
+      @this_user = @user
+    else
+      @this_user = User.find(params[:id])
+    end
   end
   
 end
