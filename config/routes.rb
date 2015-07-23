@@ -64,9 +64,9 @@ Rails.application.routes.draw do
   # get "/users" => 'users#index', as: :users
   # get "/users/new" => 'users#new', as: :new_user
   # post "/users/new" => 'users#create'
-  get "profile/edit" => 'users#edit', as: :edit_profile
-  put "profile/edit" => 'users#update'
-  delete "profile" => 'users#delete', as: :profile
+  get "/profile/edit" => 'users#edit', as: :edit_profile
+  put "/profile" => 'users#update', as: :profile
+  delete "/profile" => 'users#destroy'
   get "/profile" => 'users#show'
   # get "/users/:id" => 'users#show', as: :user    #identical to profile, except you're not logged in
   
