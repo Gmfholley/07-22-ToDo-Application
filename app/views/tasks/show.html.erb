@@ -1,20 +1,20 @@
 
 
-<% if @this_user == @task %>
-  <h3>My Profile</h3>
-  <%= link_to "Edit Profile", edit_profile_path %>
-  <%= link_to "Delete Profile", profile_path, data: {method: :delete, confirm: "Are you sure?"} %>
+<% if this_users_task? %>
+  <h3>My Task</h3>
+  <%= link_to "Edit Task", edit_my_task_path %>
+  <%= link_to "Delete Task", my_task_path, data: {method: :delete, confirm: "Are you sure?"} %>
 <% end %>
 <ul>
-  <% @this_user.attributes.each do |attribute| %>
+  <% @task.attributes.each do |attribute| %>
     <li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
   <% end %>
 </ul>
 
 <p>Associations:</p>
 <ul>
-  <% User.reflections.keys.each do |key| %>
-      <% @association = @this_user.method(key).call %>
+  <% Task.reflections.keys.each do |key| %>
+      <% @association = @task.method(key).call %>
       <% if @association.respond_to? :each %>
           <li><%= @association.name %></li>
           <ul>
@@ -22,13 +22,7 @@
             <li>None</li>
           <% end %>
           <% @association.each do |p| %>
-          <% if @this_user == @task %>
-              <li> <%= link_to p.name, my_task_path(p.id) %></li>
-          <% else  %>
-              <li> <%= link_to p.name, p %></li>
-          <% end %>
-          
-
+              <li> p.name </li>
           <% end %>
           </ul>
       <% else %>
@@ -37,6 +31,6 @@
   <% end %>        
 </ul>
 
-<% if @this_user == @task %>
-  <%= link_to "Add A Task", my_new_task_path %>
+<% if this_users_task? %>
+  <%= link_to "Add A Task", new_my_task_path %>
 <% end %>
