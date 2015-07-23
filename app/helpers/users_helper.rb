@@ -42,6 +42,9 @@ module UsersHelper
 
   def find_user_by_email
     @user = User.where("email" => params["users"]["email"]).first
+    if @user == nil
+      @user = User.new
+    end
   end
 
 end

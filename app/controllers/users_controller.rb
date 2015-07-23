@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   # receive form to create a new record
   def create
     @user = User.new(params_permitted)
+    byebug
     if @user.save
       set_session
       redirect_to profile_path
