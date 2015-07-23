@@ -49,6 +49,11 @@ class TasksController < ApplicationController
   def destroy
     current_user
     set_task
+    if @task.destroy
+      redirect_to my_tasks_path, :notice => "Successfully deleted."
+    else
+      redirect_to my_tasks_path, :notice => "Not able to delete."
+    end
   end
   
   private
