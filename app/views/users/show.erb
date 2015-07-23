@@ -3,6 +3,10 @@
 <li><%= "#{attribute[0]}: #{attribute[1]}" %></li>
 <% end %>
 
+<%= link_to "Edit Profile", edit_profile_path %>
+<%= link_to "Delete Profile", profile_path, data: {method: :delete, confirm: "Are you sure?"} %>
+
+
 </ul>
 
 <p>Associations:</p>

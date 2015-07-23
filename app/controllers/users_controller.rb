@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   
   
   def login
+    clear_session
     @user = User.new
   end
   
@@ -66,6 +67,7 @@ class UsersController < ApplicationController
   def destroy
     current_user
     if @user.delete
+      clear_session
       redirect_to users_path
     else
       redirect_to profile_path
