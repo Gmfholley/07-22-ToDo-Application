@@ -1,5 +1,5 @@
 
-<% if @task.user_id == @user.id %>
+<% if @user.id == session_id %>
   <h3>My Tasks</h3>
 <% else %>
   <h3><%= @user.name %>'s Tasks</h3>
@@ -7,10 +7,16 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <% if task.user_id == @user %>
-      <li><%= link_to user.name, edit_path %> <%= link_to "My Tasks", my_task_path %></li>
+    <% if @user.id == session_id %>
+      <li class="<%= "done" if task.completed %>"><%= link_to task.name, my_task_path %> 
+        <% if task.completed %>
+          <%= link_to "Mark Undone" %>
+        <% else  %>
+           <%= link_to "Mark Done" %>
+        <% end %>
+      </li>
     <% else %>
-      <li><%= link_to user.name, user %> <%= link_to "#{user.name}'s Tasks", user_tasks_path(user.id) %></li>
+      <li><%= link_to task.name, task %> <%= link_to "#{user.name}'s Tasks", user_tasks_path(user.id) %></li>
     <% end %>
   <% end %>
 </ul>
