@@ -17,11 +17,23 @@ module Login
     BCrypt::Password.create(p)
   end
   
-  # checks if this is a valid password
+  # returns boolean to indicate if a valid password and rescues BCrypt Hash errors
+  #
+  # returns a boolean
+  
+  def same_password?(p)
+    begin
+      (BCrypt::Password.new(self.password_encrypted) == p)
+    rescue
+      false
+    end
+  end
+  
+  # checks if this is a valid password and adds to errors if not
   #
   # returns a Boolean
   def valid_password?(p)
-    if !(BCrypt::Password.new(self.password_encrypted) == p)
+    if !same_password?(p)
       self.errors.messages["login"] = "Login Failed."
     end
     return self.errors.messages.empty?
