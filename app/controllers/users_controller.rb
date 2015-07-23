@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   # show all records
   def index
     set_user_if_available
+    @users = User.all
   end
   
   # look at form to create a new record
