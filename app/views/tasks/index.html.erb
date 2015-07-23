@@ -8,7 +8,7 @@
 <ul>
   <% @tasks.each do |task| %>
     <% if @user.id == session_id %>
-      <li class="<%= "done" if task.completed %>"><%= link_to task.name, my_task_path %> 
+      <li class="<%= "done" if task.completed %>"><%= link_to task.name, my_task_path(task.id) %> 
         <% if task.completed %>
           <%= link_to "Mark Undone" %>
         <% else  %>
@@ -16,7 +16,7 @@
         <% end %>
       </li>
     <% else %>
-      <li><%= link_to task.name, user_tasks_path(user.id) %></li>
+      <li><%= link_to task.name, user_tasks_path(task.user_id, task.id) %></li>
     <% end %>
   <% end %>
 </ul>
