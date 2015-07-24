@@ -8,10 +8,12 @@ class TasksController < ApplicationController
   
   # receive form to create a new record
   def create
+    current_user
     @task = Task.new(params_permitted)
     if @task.save
       redirect_to my_tasks_path, :notice => "Successfully added."
     else
+      @path = new_my_task_path
       render "new"
     end
   end
@@ -20,6 +22,7 @@ class TasksController < ApplicationController
   def new
     current_user
     @task = @user.tasks.new()
+    @path = new_my_task_path
   end
   
   # show a single record
@@ -32,18 +35,20 @@ class TasksController < ApplicationController
   def edit
     current_user
     set_task
+    @path = edit_my_task_path
   end
   
   # update a single record from form
   def update
     current_user
-    @task = Task.find(params["task"]["id"])
+    @task = Task.find(params["id"])
     if @task.user_id != @user.id
       redirect_to profile_path
     else 
       if @task.update(params_permitted)
         redirect_to my_tasks_path, :notice => "Successfully updated!"
       else
+        @path = edit_my_task_path
         render "edit"
       end
     end

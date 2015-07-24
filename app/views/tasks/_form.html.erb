@@ -1,6 +1,6 @@
 <%= @task.inspect %>
 
-<%= form_for @task, url: new_my_task_path do |f| %>
+<%= form_for @task, url: @path do |f| %>
   <%= f.text_field("name", placeholder: "Type in the task.") %>
   <%= f.hidden_field("user_id") %>
   <%= f.label("completed") %>
