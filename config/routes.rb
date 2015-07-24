@@ -110,6 +110,7 @@ Rails.application.routes.draw do
   post "/tasks/new" => 'tasks#create'
   get "/tasks/:id/edit" => 'tasks#edit', as: :edit_my_task
   put "/tasks/:id/edit" => 'tasks#update'
+  patch "/tasks/:id/edit" => 'tasks#update'
   delete "/tasks/:id" => 'tasks#delete'
   get "/tasks/:id" => 'tasks#show', as: :my_task
     
