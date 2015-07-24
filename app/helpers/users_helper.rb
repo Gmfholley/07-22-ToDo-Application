@@ -22,7 +22,11 @@ module UsersHelper
       @user = User.new
     end
   end
-
+  
+  def this_user?
+    @user.id == session_id
+  end
+  
   def session_id
     session[:id]
   end
