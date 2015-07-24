@@ -25,7 +25,7 @@
           <% if @this_user == @user %>
               <li> <%= link_to p.name, my_task_path(p.id) %></li>
           <% else  %>
-              <li> <%= link_to p.name, p %></li>
+              <li> <%= link_to p.name, user_task_path(p.user_id, p.id) %></li>
           <% end %>
           
 
