@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   helper TasksHelper
   # show all records
   def index
-    set_user_if_available
+    if params["user_id"].blank?
+      set_user_if_available
+    else
+      @user = User.find(params["user_id"])
+    end
     @tasks = @user.tasks
   end
   
