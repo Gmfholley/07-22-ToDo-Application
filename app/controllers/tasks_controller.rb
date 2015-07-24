@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  
+  helper TasksHelper
   # show all records
   def index
     set_user_if_available
