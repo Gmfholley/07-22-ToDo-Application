@@ -111,7 +111,7 @@ Rails.application.routes.draw do
   get "/tasks/:id/edit" => 'tasks#edit', as: :edit_my_task
   put "/tasks/:id/edit" => 'tasks#update'
   patch "/tasks/:id/edit" => 'tasks#update'
-  delete "/tasks/:id" => 'tasks#delete'
+  delete "/tasks/:id" => 'tasks#destroy'
   get "/tasks/:id" => 'tasks#show', as: :my_task
     
   put "/tasks/:id/done" => 'tasks#done', as: :mark_done
