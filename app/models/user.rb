@@ -7,5 +7,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :password_encrypted, presence: true
   
-  
+  def incomplete_tasks
+   self.tasks.select{|task| !task.completed} 
+  end
 end
