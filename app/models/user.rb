@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :password_encrypted, presence: true
   
+  # returns an Array of Task objects that are incomplete
+  #
+  # returns an Array of Tasks
   def incomplete_tasks
    self.tasks.select{|task| !task.completed} 
   end
