@@ -41,6 +41,8 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-byebug'
   gem 'sqlite3'
+  # Adds annotation to models on db scheme
+  gem 'annotate', '2.6.10'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # this gives a better debugging screen
