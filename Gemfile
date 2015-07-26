@@ -10,6 +10,7 @@ gem 'rails_12factor', group: :production
 # gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -42,7 +43,10 @@ group :development, :test do
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  # this gives a better debugging screen
+  gem 'better_errors', '2.1.1'
+  # works with better errors
+  gem 'binding_of_caller', '0.7.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
