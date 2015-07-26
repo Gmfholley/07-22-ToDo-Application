@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer          not null, primary key
+#  name               :string
+#  email              :string
+#  password_encrypted :string
+#
+
 class User < ActiveRecord::Base
   include Login
   
