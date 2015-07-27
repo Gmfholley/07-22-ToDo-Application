@@ -9,11 +9,9 @@
   <% @tasks.each do |task| %>
     <% if this_user? %>
       <li class="<%= "done" if task.completed %>"><%= link_to task.name, my_task_path(task.id) %> 
-        <% if task.completed %>
-          <%= link_to "Mark Undone" %>
-        <% else  %>
-           <%= link_to "Mark Done" %>
-        <% end %>
+        <%= link_to_if(task.completed, "Mark Undone", mark_undone_path(task.id), {class: "done mark--undone", "data-id": "#{task.id}"}) do
+        link_to "Mark Done", mark_done_path(task.id), {class: "mark--done", "data-id": "#{task.id}"}
+        end%>
       </li>
     <% else %>
       <li><%= link_to task.name, user_task_path(task.user_id, task.id) %></li>
