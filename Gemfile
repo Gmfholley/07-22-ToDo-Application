@@ -30,7 +30,11 @@ gem 'bcrypt', '~> 3.1.7'
 #adds pagination automation
 gem 'will_paginate', '3.0.7'
 gem 'pg'
+
+# creates secrets.yml and .gitignores it for keys and deploys to heroku using
+#figaro heroku:set -e production
 gem 'figaro'
+# creates ability to save files
 gem 'carrierwave'
 
 
