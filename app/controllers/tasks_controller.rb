@@ -69,6 +69,15 @@ class TasksController < ApplicationController
     end
   end
   
+  def done
+    current_user
+    
+  end
+  
+  def undone
+    current_user
+  end
+  
   private
   def set_task
     if params[:id].blank?
