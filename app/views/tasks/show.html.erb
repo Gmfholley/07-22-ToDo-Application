@@ -3,8 +3,8 @@
 <% if this_users_task? %>
   <h3>My Task</h3>
   <ul class="mark">
-   <li><%= link_to_if(@task.completed, "Mark Undone", mark_undone_path(@task.id), {class: "mark--undone, done", "data-id": "#{@task.id}"}) do
-  link_to "Mark Done", mark_done_path(@task.id), {class: "mark--done", "data-id": "#{@task.id}"}
+   <li><%= link_to_if(@task.completed, "Mark Undone", mark_undone_path(@task.id), {class: "mark--undone, done", "data-id": "#{@task.id}", method: :put}) do
+  link_to "Mark Done", mark_done_path(@task.id), {class: "mark--done", "data-id": "#{@task.id}", method: :put}
   end%></li>
    <li><%= link_to "Edit Task", edit_my_task_path %></li>
    <li><%= link_to "Delete Task", my_task_path, data: {method: :delete, confirm: "Are you sure?"} %></li> 

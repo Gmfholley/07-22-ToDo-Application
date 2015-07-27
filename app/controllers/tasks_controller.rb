@@ -71,11 +71,16 @@ class TasksController < ApplicationController
   
   def done
     current_user
-    
+    set_task
+    @task.mark_done
+    render json: @task
   end
   
   def undone
     current_user
+    set_task
+    @task.mark_undone
+    render json: @task
   end
   
   private
